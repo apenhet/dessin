@@ -9,17 +9,15 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": "off",
         "no-trailing-spaces": "error",
-        "padding-line-between-statements": [
-            "error"
-        ],
         "newline-before-return": [
             "error"
         ],
         "no-multiple-empty-lines": [
             "error",
             {
-                "max": 0,
+                "max": 1,
                 "maxEOF": 0
             }
         ],

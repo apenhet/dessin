@@ -1,30 +1,39 @@
-import { camelCase, merge } from 'lodash';
-import { dirname, resolve } from 'path';
+import { camelCase, merge } from 'lodash'
+import { dirname, resolve } from 'path'
 import { main, module, name, typings } from './package.json'
 
-import typescript from '@rollup/plugin-typescript';
+import commonjs from '@rollup/plugin-commonjs'
+import nodeResolve from '@rollup/plugin-node-resolve'
+import replace from '@rollup/plugin-replace'
+import typescript from '@rollup/plugin-typescript'
+
+const tsConfig = {
+  tsconfig: resolve('tsconfig.json')
+}
 
 const config = {
   input: 'src/index.ts',
   output: {
-    dir: __dirname,
+    dir: './',
     sourcemap: true
   },
   external: [],
   watch: {
     include: 'src/**',
   },
-  plugins: []
+  plugins: [
+    commonjs(),
+    replace({'process.env.NODE_ENV': JSON.stringify('development')}),
+    nodeResolve(),
+  ]
 }
 
 const esConfig = merge({}, config, {
   output: {
     entryFileNames: module,
-    format: 'es'
+    format: 'es',
   },
-  plugins: [typescript({
-    tsconfig: resolve('tsconfig.json')
-  })]
+  plugins: [typescript(tsConfig)]
 })
 
 const umdConfig = merge({}, config, {
@@ -34,7 +43,7 @@ const umdConfig = merge({}, config, {
     format: 'umd'
   },
   plugins: [typescript({
-    tsconfig: resolve('tsconfig.json'),
+    ...tsConfig,
     declaration: true,
     declarationDir: dirname(typings),
     rootDir: 'src/'

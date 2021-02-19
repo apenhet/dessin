@@ -1,15 +1,21 @@
-/**
- *
- *
- * @export
- * @param {number} foo
- * @param {string} truc
- * @param {boolean} [bar]
- * @return {*}  {string}
- */
-export function doSomething(foo: number, truc: string, bar?: boolean): string {
-    if (bar) {
-        return truc + foo
-    }
-    throw new Error('No way.')
+import Stage from '@/containers/Stage'
+
+const dessin = {
+  Stage,
+}
+
+export {
+  Stage
+}
+
+export default dessin
+
+if (typeof window !== 'undefined') {
+  window.dessin = dessin
+}
+
+declare global {
+  interface Window {
+    dessin: typeof dessin;
+  }
 }
