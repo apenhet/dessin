@@ -1,0 +1,36 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "unused-imports",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "no-trailing-spaces": "error",
+        "padding-line-between-statements": [
+            "error"
+        ],
+        "newline-before-return": [
+            "error"
+        ],
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 0,
+                "maxEOF": 0
+            }
+        ],
+        "semi": [
+            "error",
+            "never"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "unused-imports/no-unused-imports": "error",
+    }
+}

@@ -1,0 +1,17 @@
+name: Create Tag
+
+on:
+  workflow_run:
+    workflows: ["Generate Docs"]
+    types:
+      - completed
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: Klemensas/action-autotag@stable
+        with:
+          GITHUB_TOKEN: "${{ secrets.APENHET_WORKFLOW_SECRET }}"
+          tag_prefix: "v"
