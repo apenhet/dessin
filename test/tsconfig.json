@@ -18,7 +18,7 @@
         ],
         "paths": {
             "@/*": [
-                "src/*"
+                "../src/*"
             ]
         },
         "lib": [
@@ -27,8 +27,5 @@
             "dom.iterable",
             "scripthost"
         ]
-    },
-    "include": [
-        "src"
-    ]
+    }
 }

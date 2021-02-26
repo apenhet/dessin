@@ -1,12 +1,18 @@
-import Stage from '@/containers/Stage'
+import { Frame, Stage } from '@/containers'
+
+import { Shape } from '@/shapes'
+import { transitions } from '@/transitions'
 
 const dessin = {
   Stage,
+  Frame,
+  Shape,
+  utils: {
+    transitions,
+  },
 }
 
-export {
-  Stage
-}
+export { Stage, Frame, Shape, transitions }
 
 export default dessin
 
@@ -16,6 +22,6 @@ if (typeof window !== 'undefined') {
 
 declare global {
   interface Window {
-    dessin: typeof dessin;
+    dessin: typeof dessin
   }
 }

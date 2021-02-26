@@ -36,11 +36,10 @@
       }
     },
     "modulePathIgnorePatterns": [
-      "test/helpers",
-      "setup"
+      "test/utils"
     ],
     "setupFilesAfterEnv": [
-      "./test/setup.ts"
+      "./test/utils/setup.ts"
     ],
     "collectCoverage": true,
     "coverageReporters": [
@@ -63,13 +62,16 @@
     "better-docs": "^2.3.2",
     "commitizen": "^4.2.3",
     "eslint": "^7.20.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-unused-imports": "^1.1.0",
     "git-cz": "^4.7.6",
     "jest": "^26.6.3",
     "jest-canvas-mock": "^2.3.1",
     "jsdoc": "^3.6.6",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "path": "^0.12.7",
+    "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.39.0",
     "ts-jest": "^26.5.1",
@@ -77,6 +79,7 @@
     "typescript": "^4.1.5"
   },
   "dependencies": {
+    "@vue-reactivity/watch": "^0.1.6",
     "@vue/reactivity": "^3.0.5"
   }
 }

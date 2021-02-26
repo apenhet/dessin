@@ -8,15 +8,23 @@
     <title>Document</title>
   </head>
   <body>
-    <canvas />
+    <canvas></canvas>
+    <button onclick="instance.previous()">Previous</button>
+    <button onclick="instance.next()">Next</button>
     <script>
       const instance = new dessin.Stage("canvas", {
         width: 500,
         height: 500,
         pixelRatio: 2,
+        frames: [
+          new dessin.Frame({
+            background: 'blue'
+          }),
+          new dessin.Frame({
+            background: 'red'
+          })
+        ]
       });
-
-      console.log(instance);
     </script>
   </body>
 </html>

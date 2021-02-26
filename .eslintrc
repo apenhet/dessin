@@ -1,7 +1,8 @@
 {
     "extends": [
         "eslint:recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "plugins": [
@@ -9,26 +10,10 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "prettier/prettier": "error",
+        "no-async-promise-executor": "off",
+        "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
         "@typescript-eslint/explicit-module-boundary-types": "off",
-        "no-trailing-spaces": "error",
-        "newline-before-return": [
-            "error"
-        ],
-        "no-multiple-empty-lines": [
-            "error",
-            {
-                "max": 1,
-                "maxEOF": 0
-            }
-        ],
-        "semi": [
-            "error",
-            "never"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-imports": "error"
     }
 }
