@@ -336,6 +336,7 @@ export default class Stage {
     if (frame instanceof Frame) {
       frame = this.frames.indexOf(frame)
     }
+
     if (this.frames[frame]) {
       this.currentFrameIndex = frame
       await this.render()

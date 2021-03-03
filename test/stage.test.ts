@@ -2,7 +2,6 @@
 import { Frame, Stage } from '@/index'
 
 import { dispatch } from './utils/helpers'
-import { watcher } from '@/utils'
 
 describe('Stage', () => {
   it('should create a new Stage instance', () => {
@@ -85,20 +84,5 @@ describe('Stage', () => {
 
     dispatch(instance.canvas, 'mousemove', { clientY: 501, clientX: 501 })
     expect(onMousemove).toHaveBeenCalled()
-  })
-
-  it('should watch currentFrameIndex', () => {
-    const instance = new Stage(document.createElement('canvas'))
-    watcher(
-      () => instance.currentFrameIndex,
-      () => {
-        console.log('changed')
-      },
-      { deep: true }
-    )
-    console.log(instance.currentFrameIndex)
-    instance.currentFrameIndex = 1
-    console.log(instance.currentFrameIndex)
-    //expect(render).toHaveBeenCalled()
   })
 })

@@ -1,6 +1,8 @@
+import { Transition, transitions } from '@/transitions'
+
 import { Shape } from '@/shapes'
 import { Stage } from '@/containers'
-import { Transition } from '@/transitions'
+import { error } from '@/utils'
 
 export default class Frame {
   /**
@@ -29,13 +31,21 @@ export default class Frame {
   public background?: string = 'white'
 
   /**
+   * Transition to use.
+   *
+   * @type {Transition}
+   * @memberof Frame
+   */
+  public transition?: Transition
+
+  /**
    * Creates an instance of Frame.
    *
    * @param {Partial<ShapeOptions>} [options={}]
    * @memberof Shape
    */
   constructor(options: Partial<ShapeOptions> = {}) {
-    this.setBackground(options.background)
+    this.setBackground(options.background).setTransition(options.transition)
   }
 
   /**
@@ -59,6 +69,27 @@ export default class Frame {
    */
   public setBackground(background?: string) {
     this.background = background
+
+    return this
+  }
+
+  /**
+   * Set the current transition.
+   *
+   * @param {(string | Transition)} [transition]
+   * @return {Frame}
+   * @memberof Frame
+   */
+  public setTransition(transition?: string | Transition) {
+    if (typeof transition === 'string') {
+      if (!(transition in transitions)) {
+        error('The transition you tried to register does not exist.')
+      } else {
+        transition = transitions[transition]
+      }
+    }
+
+    this.transition = transition
 
     return this
   }
@@ -138,7 +169,7 @@ export default class Frame {
 export interface ShapeOptions {
   id: string | number
   title: string
-  transition: keyof Window['dessin']['utils']['transitions'] | Transition
+  transition: string | Transition
   background: string
   shapes: Shape[]
   stage: Stage
